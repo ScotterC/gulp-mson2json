@@ -4,9 +4,12 @@
   "description": "Gulp wrapper around mson2json",
   "main": "index.js",
   "dependencies": {
+    "gulp-util": "^3.0.6",
+    "mson2json": "^1.0.5",
     "through2": "^2.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
