@@ -11,23 +11,17 @@ module.exports = function () {
     return gutil.replaceExtension(path, ext);
   }
 
-  function transformFile(file, cb) {
-    mson2json(file.path.toString(), function (json) {
-      file.contents = new Buffer(json);
-      file.path = replaceExtension(file.path, '.md');
-      cb(); // this transforms but doesn't pass on to the next job
-    });
-
-    // cb(); // this fails to transform but passes on to next job succesffully
-  }
-
   function transform(file, enc, cb) {
     if (file.isNull()) return cb(null, file);
     if (file.isStream()) return cb(new PluginError('gulp-coffee', 'Streaming not supported'));
 
+    var mson = new Buffer(file.contents);
     var self = this;
 
-    transformFile(file, function() {
+    mson2json(mson.toString(), function (json) {
+      file.contents = new Buffer(json);
+      file.path     = replaceExtension(file.path, '.md');
+
       self.push(file);
       cb(null, file);
     });
