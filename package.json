@@ -1,11 +1,11 @@
 {
   "name": "gulp-mson2json",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Gulp wrapper around mson2json",
   "main": "index.js",
   "dependencies": {
     "gulp-util": "^3.0.6",
-    "mson2json": "^1.0.6",
+    "mson2json": "1.0.7",
     "through2": "^2.0.0"
   },
   "devDependencies": {
